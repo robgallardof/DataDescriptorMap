@@ -17,7 +17,7 @@ namespace DataDescriptorRobertoGallardo.Helpers
             DataDescriptor dataDescriptor = ConvertClassToDataDescriptor(classObject);
 
 
-            string result = Newtonsoft.Json.JsonConvert.SerializeObject(ConvertJsonToClass(classObject, dataDescriptor, payload));
+            string result = JsonConvert.SerializeObject(ConvertJsonToClass(classObject, dataDescriptor, payload));
             return result;
         }
 

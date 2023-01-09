@@ -12,7 +12,6 @@ namespace DataDescriptorRobertoGallardo.BussinessClasses
     public class Address
     {
         public string Id;
-        [ComAliasName("Calle")]
         public string Street;
         public string PostalCode;
         public string City;
