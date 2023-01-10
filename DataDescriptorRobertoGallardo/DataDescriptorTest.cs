@@ -4,6 +4,7 @@ using DataDescriptorRobertoGallardo.Helpers;
 using DataDescriptorRobertoGallardo.BussinessClasses;
 using DataDescriptorRobertoGallardo.Class;
 using DataDescriptorRobertoGallardo.BusinessClasses;
+using System.Net;
 
 namespace DataDescriptorRobertoGallardo
 {
@@ -17,16 +18,18 @@ namespace DataDescriptorRobertoGallardo
         public void TestShipmentOrder()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\ShipmentOrderPayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"DataDescriptors\ShipmentOrderDataDescriptor.json"))
-            ?? throw new InvalidOperationException();
+            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"DataDescriptors\ShipmentOrderDataDescriptor.json"));
+            Assert.IsNotNull(dataDescriptionObject);
+            Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(typeof(ShipmentOrder), payloadObject, dataDescriptionObject);
+            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
 
-            if (result == null) return;
+            Assert.IsNotNull(result);
 
-            File.WriteAllText("resultShipmentOrder.json", result);
+            File.WriteAllText(@"ResultingJsons\resultShipmentOrder.json", result);
+
             ShipmentOrder shipmentOrder = JsonConvert.DeserializeObject<ShipmentOrder>(result) ?? throw new InvalidOperationException();
-            _ = shipmentOrder;
+            Assert.IsNotNull(shipmentOrder);
         }
 
         [TestMethod]
@@ -36,16 +39,17 @@ namespace DataDescriptorRobertoGallardo
         public void TestAddress()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\AddressPayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"DataDescriptors\AddressDataDescriptor.json"))
-            ?? throw new InvalidOperationException();
+            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"DataDescriptors\AddressDataDescriptor.json"));
+            Assert.IsNotNull(dataDescriptionObject);
+            Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(typeof(Address), payloadObject, dataDescriptionObject);
+            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
 
-            if (result == null) return;
-            
-            File.WriteAllText("resultAddress.json", result);
+            Assert.IsNotNull(result);
+
+            File.WriteAllText(@"ResultingJsons\resultAddress.json", result);
             Address address = JsonConvert.DeserializeObject<Address>(result) ?? throw new InvalidOperationException();
-            _ = address;
+            Assert.IsNotNull(address);
         }
 
         [TestMethod]
@@ -55,15 +59,17 @@ namespace DataDescriptorRobertoGallardo
         public void TestPackage()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\PackagePayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"Datadescriptors\PackageDataDescriptor.json"))
-            ?? throw new InvalidOperationException();
+            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"Datadescriptors\PackageDataDescriptor.json"));
+            Assert.IsNotNull(dataDescriptionObject);
+            Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(typeof(Package), payloadObject, dataDescriptionObject);
+            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
 
-            if (result == null) return;
-            File.WriteAllText("resultPackage.json", result);
+            Assert.IsNotNull(result);
+
+            File.WriteAllText(@"ResultingJsons\resultPackage.json", result);
             Package package = JsonConvert.DeserializeObject<Package>(result) ?? throw new InvalidOperationException();
-            _ = package;
+            Assert.IsNotNull(package);
         }
 
         /// <summary>
@@ -73,15 +79,17 @@ namespace DataDescriptorRobertoGallardo
         public void TestProduct()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\ProductPayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"Datadescriptors\ProductDataDescriptor.json"))
-            ?? throw new InvalidOperationException();
+            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"Datadescriptors\ProductDataDescriptor.json"));
+            Assert.IsNotNull(dataDescriptionObject);
+            Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(typeof(Product), payloadObject, dataDescriptionObject);
+            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
 
-            if (result == null) return;
-            File.WriteAllText("resultProduct.json", result);
+            Assert.IsNotNull(result);
+
+            File.WriteAllText(@"ResultingJsons\resultProduct.json", result);
             Product product = JsonConvert.DeserializeObject<Product>(result) ?? throw new InvalidOperationException();
-            _ = product;
+            Assert.IsNotNull(product);
         }
     }
 }

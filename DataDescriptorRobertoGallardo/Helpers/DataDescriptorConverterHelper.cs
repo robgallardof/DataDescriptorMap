@@ -15,11 +15,10 @@ namespace DataDescriptorRobertoGallardo.Helpers
         /// <summary>
         /// ConvertJsonToDataDescriptor.
         /// </summary>
-        /// <param name="classObject"></param>
         /// <param name="payload"></param>
         /// <param name="dataDescriptorObject"></param>
         /// <returns></returns>
-        internal static string ConvertJsonToDataDescriptor(Type classObject, JObject payload, DataDescriptor dataDescriptorObject)
+        internal static string ConvertJsonToDataDescriptor(JObject payload, DataDescriptor dataDescriptorObject)
         {
             JToken result = JsonGenerator(payload, dataDescriptorObject);
             var test = result.ToString();
@@ -36,24 +35,36 @@ namespace DataDescriptorRobertoGallardo.Helpers
         {
             StringBuilder jsonString = new();
    
-            jsonString.Append("{");
+            
             if (!dataDescriptor.Multiple)
             {
+                jsonString.Append("{");
                 foreach (var item in dataDescriptor.Fields)
                 {
-                    jsonString.Append($"\"{item.Alias}\":\"{jsonObject[item.Name]}\",");
+                    string value = jsonObject[item.Name].ToString();
+
+                    if (nameof(DateTime).ToUpper().Equals(item.Type.ToUpper())) 
+                        value = DateTime.Parse(value).ToString("dd/MM/yyyy hh:mm:ss");
+
+                    jsonString.Append($"\"{item.Alias}\":\"{value}\",");
                 }
                 jsonString = jsonString.Remove(jsonString.Length - 1, 1);
+                jsonString.Append("}");
             }
             else
             {
                 dataDescriptor.Multiple = false;
+                jsonString.Append("{");
                 foreach (var item in jsonObject.Children())
                 {
+                    
                     JsonGenerator(item, dataDescriptor);
+                    jsonString.Append(",");
                 }
+                jsonString = jsonString.Remove(jsonString.Length - 1, 1);
+                jsonString.Append("},");
             }
-            jsonString.Append("}");
+            
 
             jsonString = jsonString.Replace("\"[", "[").Replace("]\"", "]").Replace(":\"{", ":{").Replace("}\",", "},");
             

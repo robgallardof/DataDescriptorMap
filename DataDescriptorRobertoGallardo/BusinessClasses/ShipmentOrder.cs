@@ -14,6 +14,6 @@ namespace DataDescriptorRobertoGallardo.BusinessClasses
         public DateTime ShippingStartDate;
         public Address FromAddress;
         public Address ToAdress;
-        public Package Packages;
+        public Package[] Packages;
     }
 }

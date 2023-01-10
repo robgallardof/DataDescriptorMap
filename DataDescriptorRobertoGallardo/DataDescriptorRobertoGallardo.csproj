@@ -61,4 +61,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="md $(TargetDir)\ResultingJsons" />
+  </Target>
+
 </Project>

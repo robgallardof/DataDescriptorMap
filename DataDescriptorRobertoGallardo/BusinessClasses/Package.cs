@@ -16,6 +16,7 @@ namespace DataDescriptorRobertoGallardo.BussinessClasses
         public string WeightUnit;
         public string Packaging;
         public int Quantity;
+        public Product Product;
 
     }
 }

@@ -34,6 +34,10 @@ namespace DataDescriptorRobertoGallardo.Class
         public bool Multiple;
 
         /// <summary>
+        /// Flag indicates the Type of object.
+        /// </summary>
+        public string Type;
+        /// <summary>
         /// Fields (if needed) of the object type described in the
         /// </summary>
         public DataDescriptor[] Fields;
