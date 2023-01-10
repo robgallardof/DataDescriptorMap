@@ -33,7 +33,6 @@ namespace DataDescriptorRobertoGallardo.Class
         /// </summary>
         public bool Multiple;
 
-
         /// <summary>
         /// Fields (if needed) of the object type described in the
         /// </summary>

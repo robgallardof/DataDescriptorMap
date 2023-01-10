@@ -1,0 +1,51 @@
+{
+  "Name": "FedexShipment",
+  "Alias": "ShipmentOrder",
+  "MapDescription": "This is a Fedex data  descriptor that can be converted to a",
+  "Primitive": false,
+  "Multiple": false,
+  "Fields": [
+    {
+      "Name": "FedexGuide",
+      "Alias": "CarrierShipmentId",
+      "Type": "String",
+      "Primitive": true,
+      "Multiple": false
+    },
+    {
+      "Name": "InvoiceNumber",
+      "Alias": "ReceiverReference",
+      "Type": "String",
+      "Primitive": true,
+      "Multiple": false
+    },
+    {
+      "Name": "ShippedAt",
+      "Alias": "ShippingStartDate",
+      "Type": "Datetime",
+      "Primitive": true,
+      "Multiple": false
+    },
+    {
+      "Name": "GoesFromAddress",
+      "Alias": "FromAddress",
+      "Type": "FedexAddress",
+      "Primitive": false,
+      "Multiple": false
+    },
+    {
+      "Name": "GoesToAddress",
+      "Alias": "ToAddress",
+      "Type": "FedexAddress",
+      "Primitive": false,
+      "Multiple": false
+    },
+    {
+      "Name": "Items",
+      "Alias": "Packages",
+      "Type": "FedexItem",
+      "Primitive": false,
+      "Multiple": true
+    }
+  ]
+}

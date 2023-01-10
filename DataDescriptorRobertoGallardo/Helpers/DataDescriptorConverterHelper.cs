@@ -12,53 +12,54 @@ namespace DataDescriptorRobertoGallardo.Helpers
 {
     internal static class DataDescriptorConverterHelper
     {
-        internal static string ConvertJsonToDataDescriptor(Type classObject, JObject payload ) 
+        /// <summary>
+        /// ConvertJsonToDataDescriptor.
+        /// </summary>
+        /// <param name="classObject"></param>
+        /// <param name="payload"></param>
+        /// <param name="dataDescriptorObject"></param>
+        /// <returns></returns>
+        internal static string ConvertJsonToDataDescriptor(Type classObject, JObject payload, DataDescriptor dataDescriptorObject)
         {
-            DataDescriptor dataDescriptor = ConvertClassToDataDescriptor(classObject);
-
-
-            string result = JsonConvert.SerializeObject(ConvertJsonToClass(classObject, dataDescriptor, payload));
-            return result;
+            JToken result = JsonGenerator(payload, dataDescriptorObject);
+            var test = result.ToString();
+            return test;
         }
 
-        internal static object ConvertJsonToClass(Type type, DataDescriptor dataDescriptor, JObject payload)
+        /// <summary>
+        /// JSON String Generator.
+        /// </summary>
+        /// <param name="jsonObject"></param>
+        /// <param name="dataDescriptor"></param>
+        /// <returns></returns>
+        private static JToken JsonGenerator(JToken jsonObject, DataDescriptor dataDescriptor)
         {
-            object result = Activator.CreateInstance(type);
-
-            type.GetField(dataDescriptor.Name).SetValue(result, payload);
-
-            return result;
-            
-        }
-
-            internal static DataDescriptor ConvertClassToDataDescriptor(Type type)
-        {
-            DataDescriptor dataDescriptor = new();
-                dataDescriptor.Primitive = type.IsPrimitive;
-                dataDescriptor.Name= type.Name;
-                dataDescriptor.Alias= "";
-                dataDescriptor.MapDescription= "";
-                dataDescriptor.Multiple = false;
-                dataDescriptor.Fields = GetDataDescriptorFields(type);
-
-           return dataDescriptor;
-        }
-        internal static DataDescriptor[] GetDataDescriptorFields(Type type)
-        {
-            List<DataDescriptor> dataDescriptorProperties = new();
-
-            foreach (FieldInfo field in type.GetFields())
+            StringBuilder jsonString = new();
+   
+            jsonString.Append("{");
+            if (!dataDescriptor.Multiple)
             {
-                DataDescriptor dataDescriptor = new();
-                dataDescriptor.Primitive = field.FieldType.IsPrimitive;
-                dataDescriptor.Name = field.Name;
-                dataDescriptor.Alias = "";
-                dataDescriptor.MapDescription = "";
-                dataDescriptor.Multiple = false;
-                if(!field.FieldType.IsPrimitive && field.FieldType != typeof(string)) dataDescriptor.Fields = GetDataDescriptorFields(field.FieldType);
-                dataDescriptorProperties.Add(dataDescriptor);
+                foreach (var item in dataDescriptor.Fields)
+                {
+                    jsonString.Append($"\"{item.Alias}\":\"{jsonObject[item.Name]}\",");
+                }
+                jsonString = jsonString.Remove(jsonString.Length - 1, 1);
             }
-            return dataDescriptorProperties.ToArray();
+            else
+            {
+                dataDescriptor.Multiple = false;
+                foreach (var item in jsonObject.Children())
+                {
+                    JsonGenerator(item, dataDescriptor);
+                }
+            }
+            jsonString.Append("}");
+
+            jsonString = jsonString.Replace("\"[", "[").Replace("]\"", "]").Replace(":\"{", ":{").Replace("}\",", "},");
+            
+            JToken result = JToken.Parse(jsonString.ToString());
+
+            return result;
         }
     }
 }
