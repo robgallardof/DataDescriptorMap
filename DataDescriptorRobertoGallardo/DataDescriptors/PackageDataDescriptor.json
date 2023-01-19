@@ -1,65 +1,72 @@
 {
-  "Name": "Fedexltem",
-  "Alias": "Package",
-  "MapDescription": "This  is a Fedex data descriptor that can be converted to an",
-  "Primitive": false,
-  "Multiple": false,
-  "Fields": [
-    {
-      "Name": "Length",
-      "Alias": "Length",
-      "Type": "Double",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "Width",
-      "Alias": "Width",
-      "Type": "Double",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "Height",
-      "Alias": "Height",
-      "Type": "Double",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "Weight",
-      "Alias": "Weight",
-      "Type": "Double",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "WUnit",
-      "Alias": "WeightUnit",
-      "Type": "String",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "WLHUnit",
-      "Alias": "DimensionsUnit",
-      "Type": "String",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "PackageType",
-      "Alias": "Packaging",
-      "Type": "Strig",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "Qty",
-      "Alias": "Quantity",
-      "Type": "Int",
-      "Primitive": true,
-      "Multiple": false
-    }
-  ]
+    "Name": "FedexItem",
+    "Alias": "Package",
+    "MapDescription": "This  is a Fedex data descriptor that can be converted to an",
+    "Primitive": false,
+    "Multiple": false,
+    "Fields": [
+        {
+            "Name": "Length",
+            "Alias": "Length",
+            "Type": "Double",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "Width",
+            "Alias": "Width",
+            "Type": "Double",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "Height",
+            "Alias": "Height",
+            "Type": "Double",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "Weight",
+            "Alias": "Weight",
+            "Type": "Double",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "WUnit",
+            "Alias": "WeightUnit",
+            "Type": "String",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "WLHUnit",
+            "Alias": "DimensionsUnit",
+            "Type": "String",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "PackageType",
+            "Alias": "Packaging",
+            "Type": "Strig",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "Qty",
+            "Alias": "Quantity",
+            "Type": "Int",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "Product",
+            "Alias": "Product",
+            "Type": "FedexProduct",
+            "Primitive": false,
+            "Multiple": false
+        }
+    ]
 }

@@ -1,30 +1,30 @@
 {
-  "Name": "FedexProduct",
-  "Alias": "Product",
-  "MapDescription": "This is a Fedex data descriptor that can be converted to an",
-  "Primitive": false,
-  "Multiple": false,
-  "Fields": [
-    {
-      "Name": "Id",
-      "Alias": "Id",
-      "Type": "String",
-      "Primitive": true,
-      "Multiple": false
-    },
-    {
-      "Name": "Name",
-      "Alias": "Description",
-      "Type": "String",
-      "Primitive": true,
-      "Multiple": false,
-    },
-    {
-      "Name": "Sku",
-      "Alias": "ProductCode",
-      "Type": "String",
-      "Primitive": true,
-      "Multiple": false
-    }
-  ]
+    "Name": "FedexProduct",
+    "Alias": "Product",
+    "MapDescription": "This is a Fedex data descriptor that can be converted to an",
+    "Primitive": false,
+    "Multiple": false,
+    "Fields": [
+        {
+            "Name": "Id",
+            "Alias": "Id",
+            "Type": "String",
+            "Primitive": true,
+            "Multiple": false
+        },
+        {
+            "Name": "Name",
+            "Alias": "Description",
+            "Type": "String",
+            "Primitive": true,
+            "Multiple": false,
+        },
+        {
+            "Name": "Sku",
+            "Alias": "ProductCode",
+            "Type": "String",
+            "Primitive": true,
+            "Multiple": false
+        }
+    ]
 }

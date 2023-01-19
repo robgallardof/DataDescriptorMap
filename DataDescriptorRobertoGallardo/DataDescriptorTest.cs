@@ -1,28 +1,63 @@
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using DataDescriptorRobertoGallardo.Helpers;
+using DataDescriptorRobertoGallardo.BusinessClasses;
 using DataDescriptorRobertoGallardo.BussinessClasses;
 using DataDescriptorRobertoGallardo.Class;
-using DataDescriptorRobertoGallardo.BusinessClasses;
-using System.Net;
+using DataDescriptorRobertoGallardo.Helpers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DataDescriptorRobertoGallardo
 {
     [TestClass]
     public class DataDescriptorTest
     {
-        [TestMethod]
+        #region Enums
+
+        private enum DataDescriptors
+        {
+            FedexShipment,
+            FedexAddress,
+            FedexItem,
+            FedexProduct
+        }
+
+        #endregion Enums
+
+        #region Methods
+
         /// <summary>
-        /// Test With Payload TestShipmentOrder.
+        /// Gets DataDescriptors.
         /// </summary>
+        /// <returns></returns>
+        private static List<DataDescriptor> GetDataDescriptors()
+        {
+            Dictionary<DataDescriptors, string> dataDescriptorPath = new Dictionary<DataDescriptors, string>();
+
+            dataDescriptorPath.Add(DataDescriptors.FedexShipment, @"DataDescriptors\ShipmentOrderDataDescriptor.json");
+            dataDescriptorPath.Add(DataDescriptors.FedexAddress, @"DataDescriptors\AddressDataDescriptor.json");
+            dataDescriptorPath.Add(DataDescriptors.FedexItem, @"Datadescriptors\PackageDataDescriptor.json");
+            dataDescriptorPath.Add(DataDescriptors.FedexProduct, @"Datadescriptors\ProductDataDescriptor.json");
+
+            List<DataDescriptor> dataDescriptors = new List<DataDescriptor>();
+
+            foreach (var dataDescriptor in dataDescriptorPath)
+            {
+                dataDescriptors.Add(JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(dataDescriptorPath[dataDescriptor.Key])));
+            }
+            return dataDescriptors;
+        }
+
+        #endregion Methods
+
+        [TestMethod]
         public void TestShipmentOrder()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\ShipmentOrderPayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"DataDescriptors\ShipmentOrderDataDescriptor.json"));
-            Assert.IsNotNull(dataDescriptionObject);
+
             Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
+            List<DataDescriptor> dataDescriptors = GetDataDescriptors();
+
+            string result = PayloadConverterHelper.PayloadConvert(payloadObject, dataDescriptors[(int)DataDescriptors.FedexShipment], dataDescriptors.ToArray()).ToString();
 
             Assert.IsNotNull(result);
 
@@ -33,17 +68,14 @@ namespace DataDescriptorRobertoGallardo
         }
 
         [TestMethod]
-        /// <summary>
-        /// Test With Payload Address.
-        /// </summary>
         public void TestAddress()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\AddressPayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"DataDescriptors\AddressDataDescriptor.json"));
-            Assert.IsNotNull(dataDescriptionObject);
             Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
+            List<DataDescriptor> dataDescriptors = GetDataDescriptors();
+
+            string result = PayloadConverterHelper.PayloadConvert(payloadObject, dataDescriptors[((int)DataDescriptors.FedexAddress)]).ToString();
 
             Assert.IsNotNull(result);
 
@@ -53,17 +85,15 @@ namespace DataDescriptorRobertoGallardo
         }
 
         [TestMethod]
-        /// <summary>
-        /// Test With Payload Package.
-        /// </summary>
         public void TestPackage()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\PackagePayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"Datadescriptors\PackageDataDescriptor.json"));
-            Assert.IsNotNull(dataDescriptionObject);
+
             Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
+            List<DataDescriptor> dataDescriptors = GetDataDescriptors();
+
+            string result = PayloadConverterHelper.PayloadConvert(payloadObject, dataDescriptors[((int)DataDescriptors.FedexItem)]).ToString();
 
             Assert.IsNotNull(result);
 
@@ -79,11 +109,12 @@ namespace DataDescriptorRobertoGallardo
         public void TestProduct()
         {
             JObject payloadObject = JObject.Parse(File.ReadAllText(@"Payloads\ProductPayload.json"));
-            DataDescriptor dataDescriptionObject = JsonConvert.DeserializeObject<DataDescriptor>(File.ReadAllText(@"Datadescriptors\ProductDataDescriptor.json"));
-            Assert.IsNotNull(dataDescriptionObject);
+
             Assert.IsNotNull(payloadObject);
 
-            string result = DataDescriptorConverterHelper.ConvertJsonToDataDescriptor(payloadObject, dataDescriptionObject);
+            List<DataDescriptor> dataDescriptors = GetDataDescriptors();
+
+            string result = PayloadConverterHelper.PayloadConvert(payloadObject, dataDescriptors[((int)DataDescriptors.FedexProduct)]).ToString();
 
             Assert.IsNotNull(result);
 

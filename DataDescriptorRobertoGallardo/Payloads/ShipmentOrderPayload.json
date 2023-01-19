@@ -3,53 +3,53 @@
     "InvoiceNumber": "INVOICE_G20230107USMX000001",
     "ShippedAt": "2023-01-07T22:00:00",
     "GoesFromAddress": {
-      "Id": "ADDRESS_MX4982178",
-      "Strt": "P.za  de la Constitucion S/N, Centro  Historico de la Cdad de México.",
-      "PC": "06066",
-      "Localization": "Ciudad  de  Mexico",
-      "PoliticalZone": "CDMX",
-      "Country": "Mexico",
-      "CountryCode": "MX"
+        "Id": "ADDRESS_MX4982178",
+        "Strt": "P.za  de la Constitucion S/N, Centro  Historico de la Cdad de México.",
+        "PC": "06066",
+        "Localization": "Ciudad  de  Mexico",
+        "PoliticalZone": "CDMX",
+        "Country": "Mexico",
+        "CountryCode": "MX"
     },
     "GoesToAddress": {
-      "Id": "ADDRESS_US3218793",
-      "Strt": "1600  Pennsylvania  Avenue  NW, Washington",
-      "PC": "20500",
-      "Localization": "Washington",
-      "PoliticalZone": "DC",
-      "Country": "United  States",
-      "CountryCode": "US"
+        "Id": "ADDRESS_US3218793",
+        "Strt": "1600  Pennsylvania  Avenue  NW, Washington",
+        "PC": "20500",
+        "Localization": "Washington",
+        "PoliticalZone": "DC",
+        "Country": "United  States",
+        "CountryCode": "US"
     },
     "Items": [
-      {
-        "Length": 15,
-        "Width": 15,
-        "Height": 15,
-        "Weight": 400,
-        "WUnit": "GRAM",
-        "WLHUnit": "CENTIMETER",
-        "PackageType": "BOX",
-        "Qty": 1,
-        "Product": {
-          "Id": "P_0232121",
-          "Name": "MONTBLANC 1858 POCKET WATCH EDICION",
-          "Sku": "118486"
+        {
+            "Length": 15,
+            "Width": 15,
+            "Height": 15,
+            "Weight": 400,
+            "WUnit": "GRAM",
+            "WLHUnit": "CENTIMETER",
+            "PackageType": "BOX",
+            "Qty": 1,
+            "Product": {
+                "Id": "P_0232121",
+                "Name": "MONTBLANC 1858 POCKET WATCH EDICION",
+                "Sku": "118486"
+            }
+        },
+        {
+            "Length": 1.25,
+            "Width": 1.25,
+            "Height": 1.25,
+            "Weight": 1000,
+            "WUnit": "KILOGRAM",
+            "WLHUnit": "METER",
+            "PackageType": "PALLET",
+            "Qty": 2,
+            "Product": {
+                "Id": "PF_43428",
+                "Name": "VERO PICA FRESA 8/100ct",
+                "Sku": "43428"
+            }
         }
-      },
-      {
-        "Length": 1.25,
-        "Width": 1.25,
-        "Height": 1.25,
-        "Weight": 1000,
-        "WUnit": "KILOGRAM",
-        "WHLUnit": "METER",
-        "PackageType": "PALLET",
-        "Qty": 2,
-        "Product": {
-          "Id": "PF_43428",
-          "Name": "VERO PICA FRESA 8/100ct",
-          "Sku": "43428"
-        }
-      }
     ]
-  }
+}

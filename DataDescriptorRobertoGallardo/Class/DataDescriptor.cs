@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataDescriptorRobertoGallardo.Class
+﻿namespace DataDescriptorRobertoGallardo.Class
 {
     internal class DataDescriptor
     {
@@ -37,13 +31,10 @@ namespace DataDescriptorRobertoGallardo.Class
         /// Flag indicates the Type of object.
         /// </summary>
         public string Type;
+
         /// <summary>
         /// Fields (if needed) of the object type described in the
         /// </summary>
         public DataDescriptor[] Fields;
-
-
-
-
     }
 }

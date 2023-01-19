@@ -1,9 +1,9 @@
 {
-"Id"	: "ADDRESS_MX4982178", 
-"Strt":  "P.za de la Constitucion S/N, Centro  HistOrico", 
-"PC":  "06066",
-"Localization": 	"Ciudad  de  Mexico", 
-"PoliticalZone":  "CDMX",
-"Country":  "Mexico", 
-"CountryCode":  "MX"
+    "Id": "ADDRESS_MX4982178",
+    "Strt": "P.za de la Constitucion S/N, Centro  HistOrico",
+    "PC": "06066",
+    "Localization": "Ciudad  de  Mexico",
+    "PoliticalZone": "CDMX",
+    "Country": "Mexico",
+    "CountryCode": "MX"
 }
